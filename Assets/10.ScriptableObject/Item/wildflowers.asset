@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20b8b9628fb35044584035528226c100, type: 3}
-  m_Name: I
+  m_Name: wildflowers
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 21300000, guid: f459150a868e33c43b4f19e381593e68, type: 3}
+  name: "\uB4E4\uAF43"
+  explan: 
   tag: 1
   childSlots:
   - {x: 0, y: 0}
   - {x: 0, y: 1}
   - {x: 0, y: 2}
-  - {x: 0, y: 3}

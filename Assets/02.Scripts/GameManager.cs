@@ -31,9 +31,9 @@ public class GameManager : MonoBehaviour
     public void ItemSubmit()
     {
         SymptomTag itemEffect = SymptomTag.None;
-        foreach (Slot i in grid.Grids)
+        foreach (Slot i in grid.Slots)
         {
-            if (!i.IsEmpty)
+            if (!i.IsEmpty && !i.Disable)
                 itemEffect = itemEffect.Add(i.ParentSlot.InItemObj.tag);
         }
         
