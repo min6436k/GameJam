@@ -4,12 +4,11 @@ using System.Linq;
 using cmdwtf.UnityTools.Dynamics;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ItemSystem : MonoBehaviour
 {
     public Item itemSO;
-    [SerializeField] private float dampingPower = 10;
-    [SerializeField] private float followSpeed = 1;
     private SpriteRenderer _spriteRenderer;
     private Vector2 _spriteCenter;
     private Vector3 _startPos;
@@ -29,7 +28,7 @@ public class ItemSystem : MonoBehaviour
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _spriteCenter = _spriteRenderer.size/2;
+        _spriteCenter = new Vector2(itemSO.childSlots.Max(x=>x.x)+1,itemSO.childSlots.Max(x=>x.y)+1)/2;
         _followPoint = GameManager.Instance.followPoints.GetComponent<FollowPoint>();
         _dynamicsTransform = GetComponent<DynamicsTransform>();
         _dynamicsTransform.SetTarget(GameManager.Instance.followPoints);
@@ -37,6 +36,9 @@ public class ItemSystem : MonoBehaviour
     
     public void OnMouseDown()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+        
         _startPos = Pos;
         //레이어(z축) 변경 => 이동 중에 다른 모든 아이템보다 위에 렌더링
         transform.position -= Vector3.forward/10;
@@ -53,14 +55,13 @@ public class ItemSystem : MonoBehaviour
 
     public void OnMouseDrag()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
         
         GameManager.Instance.grid.CheckGridBound(Pos, TestRotateChildSlot);
-
-
-        
         if (Input.mouseScrollDelta.y > 0 || Input.mouseScrollDelta.y < 0)
         {
-            transform.Rotate(0, 0, 90 * Mathf.Abs(Input.mouseScrollDelta.y));
+            transform.Rotate(0, 0, 90 * Mathf.Sign(Input.mouseScrollDelta.y));
             FollowPointUpdate();
             _dynamicsTransform.ResetDynamics();
         }
@@ -73,7 +74,10 @@ public class ItemSystem : MonoBehaviour
     
     public void OnMouseUp()
     {
-
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+        
+        
         Vector3 targetPos;
         //-2.1인 z축 -2로 레이어 원상복구
         transform.position += Vector3.forward/10;

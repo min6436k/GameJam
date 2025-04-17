@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20b8b9628fb35044584035528226c100, type: 3}
-  m_Name: O
+  m_Name: dianthus
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 21300000, guid: f459150a868e33c43b4f19e381593e68, type: 3}
-  tag: 8
+  name: "\uD328\uB7AD\uC774\uAF43"
+  explan: 
+  tag: 4
   childSlots:
   - {x: 0, y: 0}
   - {x: 1, y: 0}

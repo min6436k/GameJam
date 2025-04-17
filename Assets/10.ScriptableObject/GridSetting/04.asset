@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20b8b9628fb35044584035528226c100, type: 3}
-  m_Name: J
+  m_Script: {fileID: 11500000, guid: b8cafddce681f04478db4294846f354b, type: 3}
+  m_Name: 04
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 21300000, guid: f459150a868e33c43b4f19e381593e68, type: 3}
-  tag: 2
-  childSlots:
-  - {x: 0, y: 1}
-  - {x: 1, y: 1}
-  - {x: 2, y: 1}
-  - {x: 2, y: 0}
+  grid: 01010101010101010000000000010101000000010101000000000001010100000000010101000001000101010101010101
+  Tag: 7
