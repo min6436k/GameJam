@@ -1,8 +1,8 @@
 {
-  "reactions": [
+  "Reactions": [
     {
-      "symptom": "Dizzy",
-      "responses": [
+      "Symptom": "Dizzy",
+      "Responses": [
         "세상이 계속 돌아요, 멈추질 않아요.",
         "머리가 핑 돌고 코도 막힌 느낌이에요.",
         "중심을 못 잡겠어요, 코도 부은 것 같고요.",
@@ -11,8 +11,8 @@
       ]
     },
     {
-      "symptom": "Prickly",
-      "responses": [
+      "Symptom": "Prickly",
+      "Responses": [
         "목이 따끔거려서 침도 삼키기 힘들어요.",
         "따끔따끔 찌르는 느낌이 자꾸 올라와요.",
         "기침할 때마다 목에 송곳이 박히는 느낌이에요.",
@@ -21,8 +21,8 @@
       ]
     },
     {
-      "symptom": "Sneezing",
-      "responses": [
+      "Symptom": "Sneezing",
+      "Responses": [
         "이건 그냥 감기가 아니에요, 감기의 끝판왕 같아요.",
         "열, 기침, 콧물… 다 한 번에 와요.",
         "침대랑 한 몸이 됐어요. 움직이기조차 힘들어요.",
@@ -31,8 +31,8 @@
       ]
     },
     {
-      "symptom": "Tickling",
-      "responses": [
+      "Symptom": "Tickling",
+      "Responses": [
         "가슴이 뛰는데… 병일까요, 설렘일까요?",
         "누굴 보기만 해도 숨이 차고 열이 나요.",
         "사랑이 병이 될 줄은 몰랐어요. 진짜 아파요.",

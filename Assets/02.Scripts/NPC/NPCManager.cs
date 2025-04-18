@@ -7,6 +7,8 @@ public class NPCManager : MonoBehaviour
     public List<NPCData> AllNPCs; // 전체 NPC ScriptableObject 목록
 
     private List<NPCData> availableNPCs = new(); // 현재 선택 가능한 NPC 리스트
+
+    [SerializeField]
     private NPCData selectedNPC; // 현재 선택된 NPC
 
     [Header("전체 질병 ScriptableObject")]

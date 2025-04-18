@@ -799,6 +799,7 @@ GameObject:
   m_Component:
   - component: {fileID: 902014112}
   - component: {fileID: 902014111}
+  - component: {fileID: 902014113}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -840,6 +841,43 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &902014113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902014110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9051ecf05936f4f41b23dd337278fc1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  symptomToggles:
+  - toggle: {fileID: 7241927603809981478}
+    symptom: 16
+    displayText: "\uCF67\uBB3C \uC8FC\uB97C\uB975"
+  - toggle: {fileID: 1696983992607598512}
+    symptom: 32
+    displayText: "\uB530\uB048\uB530\uB048"
+  - toggle: {fileID: 1113722076632462081}
+    symptom: 64
+    displayText: "\uAFB8\uBC85\uAFB8\uBC85"
+  - toggle: {fileID: 1805093083677657804}
+    symptom: 128
+    displayText: "\uC190\uBC1C \uAF41\uAF41"
+  - toggle: {fileID: 5790766404944431839}
+    symptom: 1
+    displayText: "\uBE59\uAE00\uBE59\uAE00"
+  - toggle: {fileID: 5538347089147349913}
+    symptom: 512
+    displayText: "\uB530\uB054\uB530\uB054"
+  - toggle: {fileID: 3170276523836940233}
+    symptom: 256
+    displayText: "\uAC04\uC9C8\uAC04\uC9C8"
+  - toggle: {fileID: 346200927560388774}
+    symptom: 8
+    displayText: "\uC7AC\uCC44\uAE30 \uC640\uB974\uB974"
 --- !u!1 &968247671
 GameObject:
   m_ObjectHideFlags: 0
@@ -1817,6 +1855,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 944b1f0caf690284d9ddba00d21f44b5, type: 2}
   - {fileID: 11400000, guid: aa3352e0fc85e4e439c77d48d2d0f61c, type: 2}
   - {fileID: 11400000, guid: ec40c38f86df222489e3c1a460e0469d, type: 2}
+  selectedNPC: {fileID: 0}
   AllDiseases:
   - {fileID: 11400000, guid: 19a28c78cc1aae44ab4128fbd22cd4bc, type: 2}
   - {fileID: 11400000, guid: 99bd7e6ae2ae9f549a473f1c2300a1bc, type: 2}

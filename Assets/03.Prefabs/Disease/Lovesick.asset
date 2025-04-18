@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Lovesick
   m_EditorClassIdentifier: 
   DiseaseName: Lovesick
-  Symptoms: 0
+  Symptoms: 3
   Description: 
-  Icon: {fileID: 0}
