@@ -5,7 +5,7 @@ public class HomeSceneManager : MonoBehaviour
 {
     public void StartButton()
     {
-        SceneManager.LoadScene("PuzzleScene");
+        SceneManager.LoadScene("Dialogue");
     }
 
     public void ExitButton()

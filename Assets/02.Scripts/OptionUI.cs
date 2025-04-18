@@ -3,12 +3,14 @@ using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class OptionUI : MonoBehaviour
 {
     public static OptionUI Instance;
     public AudioMixer audioMixer;
+    public GameObject buttonObj;
 
     private float _screenY;
     private RectTransform RTransforn;
@@ -18,11 +20,14 @@ public class OptionUI : MonoBehaviour
     private float[] _volumes = new float[3];
     void Awake()
     {
-        if (Instance == null) Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(transform.parent.gameObject);
+        }
         else
         {
-            Destroy(this.gameObject);
-            DontDestroyOnLoad(this.gameObject);
+            Destroy(transform.parent);
         }
 
         _screenY = Screen.height*1.5f;
@@ -31,6 +36,11 @@ public class OptionUI : MonoBehaviour
 
     void Start()
     {
+        SceneManager.sceneLoaded += (scene, mode) =>
+        {
+            if (buttonObj != null && SceneManager.GetActiveScene().name != "Main") buttonObj.SetActive(true);
+        };
+        
         RTransforn = GetComponent<RectTransform>();
         _downTween = RTransforn.DOAnchorPosY(0, 0.9f)
             .SetAutoKill(false).Pause().SetEase(Ease.OutElastic, -1, 1.1f);

@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     public void ItemSubmit()
     {
-        SymptomTag itemEffect = SymptomTag.None;
+        Symptom itemEffect = Symptom.None;
         foreach (Slot i in grid.Slots)
         {
             if (!i.IsEmpty && !i.Disable)

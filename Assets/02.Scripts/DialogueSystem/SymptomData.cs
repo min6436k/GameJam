@@ -9,22 +9,25 @@ public enum Symptom
     Prickly = 1 << 1,
     Tickling = 1 << 2,
     Sneezing = 1 << 3,
-    
+     
 }
 
-namespace SymptomUtils
+namespace SymptomSystem
 {
-    public static class SymptomHelper
+    public static class SymptomFlag
     {
         public static bool Has(Symptom data, Symptom symptom)
             => (data & symptom) == symptom;
 
-        public static Symptom Add(Symptom current, Symptom toAdd)
-            => current | toAdd;
+        public static Symptom Add(this Symptom currentSymptom, Symptom flagToAdd)
+        {
+            return currentSymptom | flagToAdd;
+        }
 
-        public static Symptom Remove(Symptom current, Symptom toRemove)
-            => current & ~toRemove;
-
+        public static Symptom Remove(this Symptom currentSymptom, Symptom flagToRemove)
+        {
+            return currentSymptom & ~flagToRemove;
+        }
         public static List<Symptom> Extract(Symptom data)
         {
             List<Symptom> result = new List<Symptom>();

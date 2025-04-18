@@ -157,7 +157,8 @@ public class GridSystem : MonoBehaviour
             {
                 SlotColor.Able => Color.green,
                 SlotColor.Unable => Color.red,
-                SlotColor.None => Color.clear
+                SlotColor.None => Color.clear,
+                _=> Color.clear
             };
         });
     }

@@ -18,7 +18,7 @@ public class DialogueManager : MonoBehaviour
     private DialogueLine currentLine; // 현재 대화 라인
 
     private Dictionary<string, List<string>> symptomToReactions; // 증상별 반응 대사
-    private Dictionary<string, List<(string, bool)>> symptomChoicesCacheMap = new(); // 증상 퀴즈 캐시
+    private readonly Dictionary<string, List<(string, bool)>> symptomChoicesCacheMap = new(); // 증상 퀴즈 캐시
     private Dictionary<string, string> reactionCache = new(); // 증상 리액션 캐시
     private Dictionary<string, int> questionHistory = new(); // 질문 카운트 기록
     private List<string> patienceReactions; // 인내심 반응 대사 리스트
@@ -180,7 +180,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         var all = currentNPC.Disease.Symptoms;
-        var realSymptoms = SymptomUtils.SymptomHelper.Extract(all);
+        var realSymptoms = SymptomSystem.SymptomFlag.Extract(all);
         List<(string, bool)> choices = new();
 
         if (all == Symptom.None || realSymptoms.Count == 0)
@@ -197,7 +197,7 @@ public class DialogueManager : MonoBehaviour
         {
             Symptom trueSymptom = realSymptoms[UnityEngine.Random.Range(0, realSymptoms.Count)];
             var fakePool = Enum.GetValues(typeof(Symptom)).Cast<Symptom>()
-                .Where(s => s != Symptom.None && !SymptomUtils.SymptomHelper.Has(all, s)).ToList();
+                .Where(s => s != Symptom.None && !SymptomSystem.SymptomFlag.Has(all, s)).ToList();
 
             List<string> fakeSymptoms = new();
             while (fakeSymptoms.Count < 2)

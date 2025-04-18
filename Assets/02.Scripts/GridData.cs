@@ -9,7 +9,7 @@ public class GridData : ScriptableObject
 
     
     [Header("질병 태그")]
-    public SymptomTag Tag;
+    public Symptom Tag;
 }
 
 

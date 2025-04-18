@@ -118,7 +118,8 @@ public class ItemSystem : MonoBehaviour
                 0 => new Vector3(point.x, point.y),
                 90 => new Vector3(-point.y, point.x),
                 180 => new Vector3(-point.x, -point.y),
-                270 => new Vector3(point.y, -point.x)
+                270 => new Vector3(point.y, -point.x),
+                _=>new Vector3(point.x, point.y)
             };
     
         return rotatedDir;
@@ -132,7 +133,8 @@ public class ItemSystem : MonoBehaviour
             0 => new Vector2Int(point.x, point.y),
             90 => new Vector2Int(-point.y-1, point.x),
             180 => new Vector2Int(-point.x-1, -point.y-1),
-            270 => new Vector2Int(point.y, -point.x-1)
+            270 => new Vector2Int(point.y, -point.x-1),
+            _=>new Vector2Int(point.x, point.y)
         };
     
         return rotatedDir;
