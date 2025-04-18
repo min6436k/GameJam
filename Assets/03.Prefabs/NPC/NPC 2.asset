@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4fa25ec906ebdb41bebfaa7f1f8b9f0, type: 3}
+  m_Name: NPC 2
+  m_EditorClassIdentifier: 
+  Name: NPC3
+  Disease: {fileID: 11400000, guid: 9f0ebab7d44369c429de9bd72ef55d1a, type: 2}
+  Portrait: {fileID: -2413806693520163455, guid: 9d411c4b8ffded74fa50b8cf81be33e5, type: 3}

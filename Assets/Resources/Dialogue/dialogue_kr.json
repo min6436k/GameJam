@@ -1,0 +1,39 @@
+{
+  "Lines": [
+    {
+      "Id": "intro",
+      "Speaker": "의사",
+      "Text": "무엇을 물어보시겠습니까?",
+      "IsChoice": true,
+      "Choices": [
+        {
+          "Text": "오늘 기분은?",
+          "Next": "mood"
+        },
+        {
+          "Text": "증상 묻기",
+          "Next": "discomfort"
+        }
+      ]
+    },
+    {
+      "Id": "discomfort",
+      "Speaker": "의사",
+      "Text": "어떤 증상이 있으신가요?",
+      "IsChoice": true,
+      "Choices": []
+    },
+    {
+      "Id": "right_answer",
+      "Speaker": "환자",
+      "Text": "맞아요! 그 증상이 있어요.",
+      "Next": "intro"
+    },
+    {
+      "Id": "wrong_answer",
+      "Speaker": "환자",
+      "Text": "그런 증상은 없어요.",
+      "Next": "intro"
+    }
+  ]
+}
