@@ -6,8 +6,7 @@ public class PrescriptionData : MonoBehaviour
 {
     public static PrescriptionData Instance { get; private set; }
 
-    public DiseaseData disease;
-    public Symptom symptomTag;
+    public Dictionary<Symptom, string> SymptomData = new();
 
     private void Awake()
     {
