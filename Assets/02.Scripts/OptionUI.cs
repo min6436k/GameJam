@@ -13,7 +13,7 @@ public class OptionUI : MonoBehaviour
     public GameObject buttonObj;
 
     private float _screenY;
-    private RectTransform RTransforn;
+    private RectTransform RTransform;
     private Tweener _downTween;
     private Tweener _upTween;
 
@@ -41,15 +41,15 @@ public class OptionUI : MonoBehaviour
             if (buttonObj != null && SceneManager.GetActiveScene().name != "Main") buttonObj.SetActive(true);
         };
         
-        RTransforn = GetComponent<RectTransform>();
-        _downTween = RTransforn.DOAnchorPosY(0, 0.9f)
+        RTransform = GetComponent<RectTransform>();
+        _downTween = RTransform.DOAnchorPosY(0, 0.9f)
             .SetAutoKill(false).Pause().SetEase(Ease.OutElastic, -1, 1.1f);
         
-        _upTween = RTransforn.DOAnchorPosY(_screenY, 0.6f)
+        _upTween = RTransform.DOAnchorPosY(_screenY, 0.6f)
             .SetAutoKill(false).Pause().SetEase(Ease.InBack,1.2f,20f)
             .OnComplete(()=>gameObject.SetActive(false));
 
-        RTransforn.anchoredPosition = new Vector2(0,_screenY);
+        RTransform.anchoredPosition = new Vector2(0,_screenY);
     }
 
     public void OpenUI()

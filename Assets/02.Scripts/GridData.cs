@@ -5,8 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GridSetting", menuName = "Scriptable Objects/GridSetting")]
 public class GridData : ScriptableObject
 {
+    [HideInInspector]
     public bool[] grid = new bool[49];
 
+    public GameObject[] itemList = {};
     
     [Header("질병 태그")]
     public Symptom Tag;

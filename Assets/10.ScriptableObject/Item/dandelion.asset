@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b8b9628fb35044584035528226c100, type: 3}
   m_Name: dandelion
   m_EditorClassIdentifier: 
-  name: "\uBBFC\uB4E4\uB808"
-  explan: 
-  tag: 4
+  itemName: "\uBBFC\uB4E4\uB808"
+  info: 
+  tag: 1
   childSlots:
   - {x: 0, y: 0}
   - {x: 1, y: 0}

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
     public string itemName;
-    public string explanation;
+    public string info;
     public Symptom tag;
     public List<Vector2Int> childSlots = new List<Vector2Int>();
 

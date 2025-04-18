@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b8b9628fb35044584035528226c100, type: 3}
   m_Name: stone
   m_EditorClassIdentifier: 
-  name: "\uB3CC"
-  explan: 
-  tag: 1
+  itemName: "\uB3CC"
+  info: 
+  tag: 0
   childSlots:
   - {x: 0, y: 0}

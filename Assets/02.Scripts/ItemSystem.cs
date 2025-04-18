@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using cmdwtf.UnityTools.Dynamics;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,10 +13,11 @@ public class ItemSystem : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private Vector2 _spriteCenter;
     private Vector3 _startPos;
+    private Quaternion _startRot;
     private Vector3 Pos => transform.position;
     private FollowPoint _followPoint;
     private DynamicsTransform _dynamicsTransform;
-    
+    private bool _dragFlag = false;
     
     //로직 선택 미스로 인한 하드코딩
     private List<Vector2Int> TestRotateChildSlot => itemSO.childSlots.Select(x => RotatePoints(x, RotateState)).ToList();
@@ -36,10 +38,14 @@ public class ItemSystem : MonoBehaviour
     
     public void OnMouseDown()
     {
+        _dragFlag = true;
+
         if (EventSystem.current.IsPointerOverGameObject())
             return;
-        
+        GameManager.Instance.itemInfoOverlay.Close();
+
         _startPos = Pos;
+        _startRot = transform.rotation;
         //레이어(z축) 변경 => 이동 중에 다른 모든 아이템보다 위에 렌더링
         transform.position -= Vector3.forward/10;
 
@@ -71,9 +77,11 @@ public class ItemSystem : MonoBehaviour
         }
 
     }
-    
+
     public void OnMouseUp()
     {
+        _dragFlag = false;
+
         if (EventSystem.current.IsPointerOverGameObject())
             return;
         
@@ -92,15 +100,30 @@ public class ItemSystem : MonoBehaviour
             _onGrid = false;
         }else
         {
+            transform.rotation = _startRot;
             targetPos = _startPos;
             GameManager.Instance.grid.SetSlotColor(SlotColor.None);
             if(_onGrid) targetPos = GameManager.Instance.grid.SetSlot(targetPos, TestRotateChildSlot,itemSO);
         }
 
         _dynamicsTransform.enabled = false;
-        
         transform.DOMove(targetPos, 0.15f).SetEase(Ease.OutQuart);
     }
+    
+    public void OnMouseEnter()
+    {
+        if(_dragFlag) return;
+
+        GameManager.Instance.itemInfoOverlay.Open(itemSO);
+    }
+    
+    public void OnMouseExit()
+    {
+        GameManager.Instance.itemInfoOverlay.Close();
+
+    }
+
+ 
 
     private void FollowPointUpdate()
     {

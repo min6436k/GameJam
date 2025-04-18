@@ -27,4 +27,13 @@ public class PrescriptionData : MonoBehaviour
     {
         SceneManager.LoadScene("PuzzleScene");
     }
+    
+    [ContextMenu("DicLog")]
+    public void DicLog()
+    {
+        foreach (var item in SymptomData)
+        {
+            Debug.Log($"{item.Key}: {item.Value}");
+        }
+    }
 }

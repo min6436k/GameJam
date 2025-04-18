@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public Vector3 MousePos => Instance.MainCamera.ScreenToWorldPoint(Input.mousePosition);
     public Transform followPoints;
+
+    public ItemInfoOverlay itemInfoOverlay;
     void Awake()
     {
         if (Instance == null) Instance = this;

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b8b9628fb35044584035528226c100, type: 3}
   m_Name: leaf
   m_EditorClassIdentifier: 
-  name: "\uB098\uBB47\uC78E"
-  explan: 
-  tag: 16
+  itemName: "\uB098\uBB47\uC78E"
+  info: 
+  tag: 0
   childSlots:
   - {x: 0, y: 0}
   - {x: 0, y: 1}

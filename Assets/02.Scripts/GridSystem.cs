@@ -1,6 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using NUnit.Framework;
+using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public enum SlotColor
 {
@@ -13,7 +17,8 @@ public enum SlotColor
 public class Slot
 {
     public GameObject SlotObj;
-
+    public GameObject[] ItemPrefabs = {};
+    
     public Item InItemObj;
 
     public Slot ParentSlot;
@@ -42,7 +47,10 @@ public class GridSystem : MonoBehaviour
     public Vector3 RectOffSet => transform.position;
 
     public Slot[,] Slots;
+    public GameObject[] itemList = { };
     public Rect storageBounds;
+
+    public int spawnRandomItemCount = 3;
 
     public GameObject slotObj;
     public GridData gridData;
@@ -50,6 +58,7 @@ public class GridSystem : MonoBehaviour
     private RectInt _gridBounds;
     private SpriteRenderer _spriteRenderer;
     private List<Vector2Int> _lastSelectSlots = new();
+    public List<GameObject> spawnedItems = new();
     private bool _isSetAble;
 
     void Start()
@@ -74,22 +83,69 @@ public class GridSystem : MonoBehaviour
                 {
                     instance.Disable = true;
                     instance.Color = Color.gray;
+                    instance.Color -= new Color(0,0,0,0.4f);
                 }
             }
         }
+
+        SetItem();
     }
-    
-    void OnGUI()
+
+    private void SetItem()
     {
-        for (int x = 0; x < _gridBounds.xMax; x++)
+        List<GameObject> randomItems = itemList.ToList();
+
+        foreach (GameObject i in gridData.itemList)
         {
-            for (int y = 0; y < _gridBounds.yMax; y++)
-            {
-                Vector2 a = GameManager.Instance.MainCamera.WorldToScreenPoint(Slots[x,y].SlotObj.transform.position+new Vector3(0,1));
-                a.y = Screen.height - a.y;
-                GUI.Label(new Rect(a.x, a.y, 300, 20), Slots[x,y].IsEmpty.ToString());
-            }
+            ItemSystem instance = Instantiate(i).GetComponent<ItemSystem>();
+
+            Vector3 tempPos = RandomItemPosInStorage(instance.itemSO.childSlots);
+            
+            randomItems.Remove(i);
+            instance.transform.position = tempPos;
+            spawnedItems.Add(instance.gameObject);
         }
+
+        HashSet<GameObject> uniqueIndices = new HashSet<GameObject>();
+        while (uniqueIndices.Count < spawnRandomItemCount)
+        {
+            int randomIndex = Random.Range(0, randomItems.Count);
+            uniqueIndices.Add(randomItems[randomIndex]);
+        }
+        
+        foreach (GameObject i in new List<GameObject>(uniqueIndices))
+        {
+            ItemSystem instance = Instantiate(i).GetComponent<ItemSystem>();
+
+            Vector3 tempPos = RandomItemPosInStorage(instance.itemSO.childSlots);
+            
+            instance.transform.position = tempPos;
+            spawnedItems.Add(instance.gameObject);
+        }
+
+    }
+
+    public void ResetItem()
+    {
+        foreach (GameObject i in spawnedItems)
+        {
+            i.transform.rotation = quaternion.identity;
+            i.transform.position = RandomItemPosInStorage(i.GetComponent<ItemSystem>().itemSO.childSlots);
+        }
+    }
+
+    private Vector3 RandomItemPosInStorage(List<Vector2Int> list)
+    {
+        float randomX, randomY;
+        Vector3 tempPos;
+        do
+        {
+            randomX = Random.Range(storageBounds.x+0.5f, storageBounds.x + storageBounds.width- 0.5f);
+            randomY = Random.Range(storageBounds.y+0.5f, storageBounds.y + storageBounds.height- 0.5f);
+            tempPos = new(randomX, randomY, -2);
+        } while (!CheckStorageBound(tempPos, list));
+
+        return tempPos;
     }
 
     public Vector3 SetSlot(Vector3 target, List<Vector2Int> childSlots, Item itemInfo)
@@ -160,6 +216,8 @@ public class GridSystem : MonoBehaviour
                 SlotColor.None => Color.clear,
                 _=> Color.clear
             };
+
+            Slots[x.x, x.y].Color -= new Color(0, 0, 0, 0.2f);
         });
     }
 }

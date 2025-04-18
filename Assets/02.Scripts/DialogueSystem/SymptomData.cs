@@ -13,9 +13,9 @@ public enum Symptom
     WarmFeel = 1 << 5,         // 따끈따끈
     Drowsy = 1 << 6,           // 꾸벅꾸벅
     ColdHandsFeet = 1 << 7,    // 손발 꽁꽁
-    TickleThroat = 1 << 8,
-    PricklyThroat = 1 << 9
-
+    Tree = 1 << 8,             // 전용
+    Dianthus = 1 << 9,        // 전용
+    Delphinium = 1 << 10,       // 전용
 }
 
 namespace SymptomSystem
