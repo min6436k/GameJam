@@ -11,7 +11,6 @@ public class ResultEvaluator : MonoBehaviour
     public Sprite currentImage;
 
     public int Score = 0;
-
     public void Evaluate()
     {
         Symptom submittedResult = PrescriptionData.Instance.submitSymptom;

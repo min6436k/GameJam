@@ -52,7 +52,6 @@ public class DialogueManager : MonoBehaviour
         NpcManager.SelectRandomNPC(npcUIRoot); // 랜덤한 NPC 선택
 
         currentNPC = NpcManager.GetSelectedNPC(); // 선택된 NPC 저장
-        PrescriptionData.Instance.CurrentDiseaseData = currentNPC.Disease;
 
         UIManager.Instance.SetPortrait(currentNPC.Portrait); // NPC 이미지 표시
         UIManager.Instance.SetupAffectionHearts(PatienceSystem.Instance.MaxPatience); // 하트 UI 초기화
@@ -136,15 +135,19 @@ public class DialogueManager : MonoBehaviour
                 if (choice.Text == "오늘 기분은?")
                 {
                     TrackQuestion(choice.Text);
-                    CheckPatience(choice.Text);
-                    HandleMoodQuestion(); // ✅ 기분 반응 출력
+
+                    bool lost = CheckPatience(choice.Text);
+                    if (lost) return; // 인내심 깎이면 짜증 대사만 출력하고 종료
+
+                    HandleMoodQuestion(); // 정상 반응 출력
                     return;
                 }
 
                 if (choice.Text != "증상 묻기")
                 {
                     TrackQuestion(choice.Text);
-                    CheckPatience(choice.Text);
+                    bool lost = CheckPatience(choice.Text);
+                    if (lost) return;
                 }
 
                 StartDialogue(choice.Next);

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 public class PatienceSystem : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PatienceSystem : MonoBehaviour
 
     public bool IsOutOfPatience => CurrentPatience <= 0; // 인내심이 바닥났는지 여부
 
+    public GameEndChecker GameEndChecker;
+
     private void Awake()
     {
         // 싱글톤 초기화
@@ -20,7 +23,7 @@ public class PatienceSystem : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject); 
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -38,7 +41,10 @@ public class PatienceSystem : MonoBehaviour
     // 인내심을 1 감소시키고, UI 갱신. 감소 시 true 반환
     public bool ReducePatience()
     {
-        if (CurrentPatience <= 0) return false;
+        if (CurrentPatience <= 0)
+        {
+            GameEndChecker.Result();
+        }
 
         CurrentPatience--;
         UIManager.Instance.UpdateHearts(CurrentPatience);
@@ -46,3 +52,4 @@ public class PatienceSystem : MonoBehaviour
         return true;
     }
 }
+

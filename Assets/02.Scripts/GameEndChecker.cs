@@ -1,9 +1,16 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class GameEndChecker : MonoBehaviour
-{
+{   
+
     public NPCManager npcManager; // NPC 리스트와 현재 NPC 접근
-    public PatienceSystem patienceSystem; // 인내심 시스템
+    public PatienceSystem patienceSystem;
+    public GameObject Panel;
+    public TextMeshProUGUI text1;
+    public TextMeshProUGUI text2;
+    public ResultEvaluator result;
 
     public void CheckGameResult()
     {
@@ -14,13 +21,20 @@ public class GameEndChecker : MonoBehaviour
         }
         else if (npcManager.IsAllNPCUsed()) // 이 함수는 따로 만들어야 함
         {
-            Debug.Log("🏆 게임 승리 - 모든 NPC 처방 완료");
-
-            // TODO: 승리 UI 호출 등 처리
+            Debug.Log(" 게임 승리 - 모든 NPC 처방 완료");
+            Result();
         }
         else
         {
-            Debug.Log("🔄 게임 계속 진행 중");
+            Debug.Log("게임 계속 진행 중");
         }
+    }
+    
+    public void Result()
+    {   
+        Panel.SetActive(true);
+        Panel.GetComponent<MoveTween>().Open();
+        text1.text = PatienceSystem.Instance.CurrentPatience.ToString();
+        text2.text = result.Score.ToString();
     }
 }

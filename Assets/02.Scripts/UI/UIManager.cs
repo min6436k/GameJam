@@ -179,4 +179,9 @@ public class UIManager : MonoBehaviour
         MedicineImageUI.sprite = icon;
         MedicineImageUI.enabled = icon != null;
     }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("Main");
+    }
 }
