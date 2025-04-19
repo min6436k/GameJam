@@ -51,6 +51,14 @@ public class NPCManager : MonoBehaviour
 
         Debug.Log($"[🎯 선택된 NPC] {selectedNPC.Name}");
 
+        if (PrescriptionData.Instance != null && selectedNPC.Disease != null)
+        {
+            PrescriptionData.Instance.CurrentDiseaseData = selectedNPC.Disease;
+            Debug.Log($"CurrentDiseaseData 설정 {selectedNPC.Disease.DiseaseName}");
+        }
+
+
+
         if (symptomRootTransform != null)
             ShowSymptomsOnNPC(selectedNPC, symptomRootTransform);
     }

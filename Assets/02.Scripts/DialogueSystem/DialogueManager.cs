@@ -52,6 +52,7 @@ public class DialogueManager : MonoBehaviour
         NpcManager.SelectRandomNPC(npcUIRoot); // 랜덤한 NPC 선택
 
         currentNPC = NpcManager.GetSelectedNPC(); // 선택된 NPC 저장
+        PrescriptionData.Instance.CurrentDiseaseData = currentNPC.Disease;
 
         UIManager.Instance.SetPortrait(currentNPC.Portrait); // NPC 이미지 표시
         UIManager.Instance.SetupAffectionHearts(PatienceSystem.Instance.MaxPatience); // 하트 UI 초기화

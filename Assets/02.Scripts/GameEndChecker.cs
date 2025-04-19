@@ -9,12 +9,13 @@ public class GameEndChecker : MonoBehaviour
     {
         if (patienceSystem.IsOutOfPatience)
         {
-            Debug.Log("❌ 게임 패배 - 인내심 소진");
+            PatienceSystem.Instance.ReducePatience();
             // TODO: 패배 UI 호출 등 처리
         }
         else if (npcManager.IsAllNPCUsed()) // 이 함수는 따로 만들어야 함
         {
             Debug.Log("🏆 게임 승리 - 모든 NPC 처방 완료");
+
             // TODO: 승리 UI 호출 등 처리
         }
         else

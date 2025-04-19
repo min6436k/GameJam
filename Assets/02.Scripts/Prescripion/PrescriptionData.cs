@@ -20,7 +20,8 @@ public class PrescriptionData : MonoBehaviour
 
     public bool SubmitFlag { get; private set; }
     public Symptom submitSymptom;
-    
+
+    public DiseaseData CurrentDiseaseData;
 
 
     private void Awake()
@@ -110,4 +111,5 @@ public class PrescriptionData : MonoBehaviour
             Debug.Log($"{item.Key}: {item.Value}");
         }
     }
+
 }

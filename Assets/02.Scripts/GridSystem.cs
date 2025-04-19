@@ -62,7 +62,7 @@ public class GridSystem : MonoBehaviour
     public List<GameObject> spawnedItems = new();
     private bool _isSetAble;
 
-    void Start()
+    public void Init()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
 

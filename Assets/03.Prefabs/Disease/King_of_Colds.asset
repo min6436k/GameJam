@@ -20,3 +20,4 @@ MonoBehaviour:
   - "\uC9C0\uAE08 \uB098\uC5D0\uAC8C \uAC10\uAE30\uC655\uC774 \uCC3E\uC544\uC628
     \uAC70 \uAC19\uC544..\uC5E3\uCDE8! \uADF8\uB798\uC11C \uAE34\uC7A5\uD558\uB294
     \uC911\uC774\uC57C!"
+  Grid: {fileID: 11400000, guid: 5a6563c7c2cd4d040804b8fb23383daf, type: 2}

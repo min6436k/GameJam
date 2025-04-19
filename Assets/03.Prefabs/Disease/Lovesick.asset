@@ -19,3 +19,4 @@ MonoBehaviour:
   MoodResponses:
   - "\uB09C \uC9C0\uAE08 \uC0AC\uB791\uC5D0 \uBE60\uC84C\uC5B4. \uB108 \uC0AC\uB791\uC774
     \uBB54\uC9C0 \uC54C\uC544? \uC138\uC0C1\uC774 \uD551\uD06C\uC0C9\uC778 \uAE30\uBD84?"
+  Grid: {fileID: 11400000, guid: 2f62186e69bc79d47879033bae40700b, type: 2}
