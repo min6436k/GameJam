@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
                 itemEffect = itemEffect.Add(i.ParentSlot.InItemObj.tag);
         }
         
+        PrescriptionData.Instance.Reset();
         PrescriptionData.Instance.Submit(itemEffect);
         PuzzleResultData.Instance.HasReturnedFromPuzzle = true;
         SceneManager.LoadScene("Dialogue");

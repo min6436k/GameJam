@@ -95,6 +95,11 @@ public class PrescriptionData : MonoBehaviour
     public void Reset()
     {
         SubmitFlag = false;
+        
+        foreach (var i in _symptomToggleMap)
+            Destroy(i.Value);
+
+        _symptomToggleMap.Clear();
     }
 
 
