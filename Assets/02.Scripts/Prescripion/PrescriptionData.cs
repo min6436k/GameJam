@@ -18,6 +18,10 @@ public class PrescriptionData : MonoBehaviour
     public Transform offsetPositionObj;
     private Dictionary<Symptom, Toggle> _symptomToggleMap = new();
 
+    public bool SubmitFlag { get; private set; }
+    public Symptom submitSymptom;
+    
+
 
     private void Awake()
     {
@@ -80,6 +84,16 @@ public class PrescriptionData : MonoBehaviour
         if (_symptomToggleMap.TryGetValue(symptom, out Toggle toggle)) toggle.isOn = value;
     }
 
+    public void Submit(Symptom symptom)
+    {
+        SubmitFlag = true;
+        submitSymptom = symptom;
+    }
+
+    public void Reset()
+    {
+        SubmitFlag = false;
+    }
 
 
     [ContextMenu("loadScene")]

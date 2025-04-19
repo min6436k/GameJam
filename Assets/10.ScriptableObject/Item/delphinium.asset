@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: delphinium
   m_EditorClassIdentifier: 
   itemName: "\uB378\uD53C\uB284"
-  info: 
+  info: "<size=25><b><color=#9900CC>\uB098\uD640\uB85C \uACA8\uC6B8</color></b>\uC774
+    \uCC3E\uC544\uC628 \uAC83 \uAC19\uB2E4.</size> "
   tag: 1024
   childSlots:
   - {x: 0, y: 1}

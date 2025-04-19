@@ -39,6 +39,6 @@ public class GameManager : MonoBehaviour
                 itemEffect = itemEffect.Add(i.ParentSlot.InItemObj.tag);
         }
         
-        Debug.Log(itemEffect);
+        PrescriptionData.Instance.Submit(itemEffect);
     }
 }

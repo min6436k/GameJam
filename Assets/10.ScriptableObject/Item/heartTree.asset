@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: heartTree
   m_EditorClassIdentifier: 
   itemName: "\uD558\uD2B8 \uB098\uBB47\uAC00\uC9C0"
-  info: 
+  info: "<size=25><b><color=#FF66CC>\uC0AC\uB791</color></b>\uC774 \uB290\uAEF4\uC9C0\uB294
+    \uB098\uBB47\uAC00\uC9C0\uAC19\uB2E4.</size> "
   tag: 4
   childSlots:
   - {x: 0, y: 0}

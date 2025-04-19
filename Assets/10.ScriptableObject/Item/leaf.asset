@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: leaf
   m_EditorClassIdentifier: 
   itemName: "\uB098\uBB47\uC78E"
-  info: 
+  info: "<size=25>\uC57D\uC744 \uB9CC\uB4E4\uAE30 \uC704\uD574\uC11C\uB294 <b><color=red>\uD544\uC218</color></b>\uB2E4.</size> "
   tag: 0
   childSlots:
   - {x: 0, y: 0}

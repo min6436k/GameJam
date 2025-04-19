@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: dianthus
   m_EditorClassIdentifier: 
   itemName: "\uD328\uB7AD\uC774"
-  info: 
+  info: "<size=25>\uAF43\uC758 <b><color=#FF6666>\uB530\uB054\uB530\uB054\uD568</color></b>\uC774
+    \uBCD1\uC744 \uC774\uAE38 \uAC83 \uAC19\uB2E4.</size> "
   tag: 512
   childSlots:
   - {x: 0, y: 0}

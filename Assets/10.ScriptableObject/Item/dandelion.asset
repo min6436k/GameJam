@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: dandelion
   m_EditorClassIdentifier: 
   itemName: "\uBBFC\uB4E4\uB808"
-  info: 
+  info: "<size=25>\uB3D9\uAE00\uB3D9\uAE00~! <b><color=#00CCCC>\uBE59\uAE00\uBE59\uAE00</color></b>\uC774
+    \uBA48\uCD9C \uAC83 \uAC19\uB2E4.</size> "
   tag: 1
   childSlots:
   - {x: 0, y: 0}

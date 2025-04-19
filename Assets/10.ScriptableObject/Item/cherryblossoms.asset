@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: cherryblossoms
   m_EditorClassIdentifier: 
   itemName: "\uBC9A\uAF43"
-  info: 
+  info: "<size=25><b><color=#FF6666>\uB530\uB048\uB530\uB048</color></b>\uD55C \uBAB8\uC774
+    \uD3B8\uC548\uD574\uC9C8 \uAC83 \uAC19\uB2E4.</size> "
   tag: 32
   childSlots:
   - {x: 1, y: 0}

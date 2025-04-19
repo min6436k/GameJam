@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: magnolia
   m_EditorClassIdentifier: 
   itemName: "\uBAA9\uB828"
-  info: 
+  info: "<size=25><b><color=#00CCCC>\uBE59\uAE00\uAC70\uB9AC\uB358</color></b> \uC878\uC74C\uC744
+    \uBA48\uCD9C \uAC83 \uAC19\uB2E4.</size> "
   tag: 64
   childSlots:
   - {x: 1, y: 1}

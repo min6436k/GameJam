@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: stone
   m_EditorClassIdentifier: 
   itemName: "\uB3CC"
-  info: 
+  info: "<size=25>\uAF43\uC744 \uBE7B\uAE30 \uC704\uD574\uC11C\uB294 <b><color=red>\uD544\uC218</color></b>\uB2E4.</size> "
   tag: 0
   childSlots:
   - {x: 0, y: 0}
