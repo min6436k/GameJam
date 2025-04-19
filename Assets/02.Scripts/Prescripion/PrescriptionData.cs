@@ -24,9 +24,10 @@ public class PrescriptionData : MonoBehaviour
     public DiseaseData CurrentDiseaseData;
 
 
+
     private void Awake()
     {
-        
+
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
