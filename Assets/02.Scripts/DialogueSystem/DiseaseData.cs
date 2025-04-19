@@ -12,4 +12,6 @@ public class DiseaseData : ScriptableObject
     public string Description;
 
     [TextArea] public List<string> MoodResponses;
+
+    public GridData Grid;
 }

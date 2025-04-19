@@ -14,7 +14,7 @@ public class ResultEvaluator : MonoBehaviour
 
     public void Evaluate()
     {
-        Symptom submittedResult = PuzzleResultData.Instance.DummyResult;
+        Symptom submittedResult = PrescriptionData.Instance.submitSymptom;
 
         // 가장 유사한 질병 찾기
         DiseaseData bestMatch = FindClosestDisease(submittedResult);
@@ -59,7 +59,7 @@ public class ResultEvaluator : MonoBehaviour
         var submitted = SymptomSystem.SymptomFlag.Extract(submittedResult);
 
         bool allMatch = correct.All(submitted.Contains);
-        Score += allMatch ? 1 : -1;
+        Score += allMatch ? 1 : 0;
 
         Debug.Log(allMatch ? "✅ 정답" : "❌ 오답");
         Debug.Log($"📊 점수: {Score}");

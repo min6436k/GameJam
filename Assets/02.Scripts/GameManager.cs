@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using SymptomSystem;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         MainCamera = Camera.main;
+        grid.gridData = PrescriptionData.Instance.CurrentDiseaseData.Grid;
+        grid.Init();
     }
 
     // Update is called once per frame
@@ -40,5 +43,7 @@ public class GameManager : MonoBehaviour
         }
         
         PrescriptionData.Instance.Submit(itemEffect);
+        PuzzleResultData.Instance.HasReturnedFromPuzzle = true;
+        SceneManager.LoadScene("Dialogue");
     }
 }
