@@ -51,6 +51,8 @@ public class OptionUI : MonoBehaviour
 
         RTransform.anchoredPosition = new Vector2(0,_screenY);
     }
+    
+    
 
     public void OpenUI()
     {
@@ -69,4 +71,13 @@ public class OptionUI : MonoBehaviour
     
     public void SetSFXVolume(float volume) =>
         audioMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
+    
+    public void ExitButton()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 }

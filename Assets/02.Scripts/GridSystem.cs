@@ -48,6 +48,7 @@ public class GridSystem : MonoBehaviour
 
     public Slot[,] Slots;
     public GameObject[] itemList = { };
+    public Transform storageObj;
     public Rect storageBounds;
 
     public int spawnRandomItemCount = 3;
@@ -103,6 +104,7 @@ public class GridSystem : MonoBehaviour
             
             randomItems.Remove(i);
             instance.transform.position = tempPos;
+            instance.transform.SetParent(storageObj);
             spawnedItems.Add(instance.gameObject);
         }
 
@@ -120,6 +122,7 @@ public class GridSystem : MonoBehaviour
             Vector3 tempPos = RandomItemPosInStorage(instance.itemSO.childSlots);
             
             instance.transform.position = tempPos;
+            instance.transform.SetParent(storageObj);
             spawnedItems.Add(instance.gameObject);
         }
 
@@ -165,16 +168,19 @@ public class GridSystem : MonoBehaviour
                 Slots[temp.x + childSlots[0].x, temp.y + childSlots[0].y];
         }
 
+        PrescriptionData.Instance.SetToggleOn(itemInfo.tag, true);
+
         return temp + RectOffSet;
     }
 
     public void UnSetSlot(Vector3 target, List<Vector2Int> childSlots)
     {
         Vector3Int temp = Vector3Int.RoundToInt(target - RectOffSet);
-
+        Slot tempSlot = Slots[temp.x + childSlots[0].x, temp.y + childSlots[0].y];
+        PrescriptionData.Instance.SetToggleOn(tempSlot.ParentSlot.InItemObj.tag, false);
         foreach (Vector2Int childSlot in childSlots)
         {
-            Slots[temp.x + childSlots[0].x, temp.y + childSlots[0].y].Clear();
+            tempSlot.Clear();
 
             Slots[temp.x + childSlot.x, temp.y + childSlot.y].ParentSlot = null;
         }

@@ -10,8 +10,6 @@ public class GridData : ScriptableObject
 
     public GameObject[] itemList = {};
     
-    [Header("질병 태그")]
-    public Symptom Tag;
 }
 
 
