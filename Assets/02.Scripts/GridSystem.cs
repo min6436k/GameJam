@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using NUnit.Framework;
 using Unity.Mathematics;
 using UnityEngine;
@@ -211,19 +212,19 @@ public class GridSystem : MonoBehaviour
 
     public void SetSlotColor(SlotColor slotColor)
     {
+        
+        Color tempColor = slotColor switch
+        {
+            SlotColor.Able => Color.green,
+            SlotColor.Unable => Color.red,
+            SlotColor.None => Color.clear,
+            _=> Color.clear
+        };
         _lastSelectSlots.ForEach(x =>
         {
             if (Slots[x.x, x.y].Disable) return;
-        
-            Slots[x.x, x.y].Color = slotColor switch
-            {
-                SlotColor.Able => Color.green,
-                SlotColor.Unable => Color.red,
-                SlotColor.None => Color.clear,
-                _=> Color.clear
-            };
 
-            Slots[x.x, x.y].Color -= new Color(0, 0, 0, 0.2f);
+            Slots[x.x, x.y].SpriteRenderer.DOColor(tempColor, 0.2f);
         });
     }
 }
