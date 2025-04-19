@@ -10,12 +10,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1157561673648166735, guid: 638c7a62f4ea3a844bf42c829b9ccc35, type: 3}
       propertyPath: m_Name
-      value: stone(Default) Variant
+      value: Flower
       objectReference: {fileID: 0}
     - target: {fileID: 1945485777032425662, guid: 638c7a62f4ea3a844bf42c829b9ccc35, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 27392af38765c2742925238a719cd949, type: 3}
+    - target: {fileID: 2004633662953219523, guid: 638c7a62f4ea3a844bf42c829b9ccc35, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2004633662953219523, guid: 638c7a62f4ea3a844bf42c829b9ccc35, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.82

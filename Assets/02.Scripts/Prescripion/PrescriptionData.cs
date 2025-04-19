@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -58,7 +57,7 @@ public class PrescriptionData : MonoBehaviour
         else
         {
             foreach (var i in _symptomToggleMap)
-                Destroy(i.Value);
+                Destroy(i.Value.gameObject);
 
             _symptomToggleMap.Clear();
         }
@@ -79,6 +78,7 @@ public class PrescriptionData : MonoBehaviour
             Toggle toggle = instance.GetComponent<Toggle>();
             _symptomToggleMap[i.Key] = toggle;
         }
+        SymptomData.Clear();
     }
     
     public void SetToggleOn(Symptom symptom,bool value)
@@ -97,7 +97,7 @@ public class PrescriptionData : MonoBehaviour
         SubmitFlag = false;
         
         foreach (var i in _symptomToggleMap)
-            Destroy(i.Value);
+            Destroy(i.Value.gameObject);
 
         _symptomToggleMap.Clear();
     }

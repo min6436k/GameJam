@@ -12,7 +12,7 @@ public class GridData : ScriptableObject
     
 }
 
-
+#if UNITY_EDITOR
 [CustomEditor(typeof(GridData))]
 public class GridDataEditor : Editor
 {
@@ -43,3 +43,4 @@ public class GridDataEditor : Editor
         }
     }
 }
+#endif
