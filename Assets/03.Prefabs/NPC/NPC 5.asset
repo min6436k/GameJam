@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: NPC 5
   m_EditorClassIdentifier: 
   Name: NPC6
-  Disease: {fileID: 11400000, guid: 99bd7e6ae2ae9f549a473f1c2300a1bc, type: 2}
+  Disease: {fileID: 0}
   Portrait: {fileID: 3625043607559282579, guid: 3bf644fb42be03e4bb678164998fcf77, type: 3}

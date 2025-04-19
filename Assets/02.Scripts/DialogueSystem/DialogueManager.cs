@@ -118,11 +118,11 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    void ShowChoices(List<DialogueChoice> choices) // 선택지를 UI에 표시하고 버튼 클릭 시 다음 대사로 연결
+    void ShowChoices(List<DialogueChoice> choices)
     {
         UIManager.Instance.ClearChoices();
 
-        if (currentLine.Id == "discomfort") // 증상 퀴즈 진입
+        if (currentLine.Id == "discomfort")
         {
             GenerateSymptomQuizChoices();
             return;
@@ -132,7 +132,15 @@ public class DialogueManager : MonoBehaviour
         {
             UIManager.Instance.CreateChoiceButton(choice.Text, () =>
             {
-                if (choice.Text != "증상 묻기") // 증상 묻기는 카운트 제외
+                if (choice.Text == "오늘 기분은?")
+                {
+                    TrackQuestion(choice.Text);
+                    CheckPatience(choice.Text);
+                    HandleMoodQuestion(); // ✅ 기분 반응 출력
+                    return;
+                }
+
+                if (choice.Text != "증상 묻기")
                 {
                     TrackQuestion(choice.Text);
                     CheckPatience(choice.Text);
@@ -311,4 +319,28 @@ public class DialogueManager : MonoBehaviour
         if (currentLine == null || string.IsNullOrEmpty(currentLine.Next)) return;
         StartDialogue(currentLine.Next);
     }
+    void HandleMoodQuestion()
+    {
+        var disease = currentNPC.Disease;
+        if (disease != null && disease.MoodResponses != null && disease.MoodResponses.Count > 0)
+        {
+            string randomResponse = disease.MoodResponses[UnityEngine.Random.Range(0, disease.MoodResponses.Count)];
+            UIManager.Instance.SetSpeaker(currentNPC.Name);
+            UIManager.Instance.SetDialogue(randomResponse);
+
+            NextButton.gameObject.SetActive(true);
+            NextButton.onClick.RemoveAllListeners();
+            NextButton.onClick.AddListener(() =>
+            {
+                StartDialogue("intro");
+                NextButton.onClick.RemoveAllListeners();
+                NextButton.onClick.AddListener(NextLine);
+            });
+        }
+        else
+        {
+            UIManager.Instance.SetDialogue("글쎄요… 그냥 그런 느낌이에요.");
+        }
+    }
+    
 }

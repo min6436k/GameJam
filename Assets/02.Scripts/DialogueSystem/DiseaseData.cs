@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 [CreateAssetMenu(fileName = "NewDisease", menuName = "Disease/Create New Disease")]
@@ -9,4 +10,6 @@ public class DiseaseData : ScriptableObject
 
     [TextArea]
     public string Description;
+
+    [TextArea] public List<string> MoodResponses;
 }

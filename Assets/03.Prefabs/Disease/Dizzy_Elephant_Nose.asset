@@ -16,3 +16,6 @@ MonoBehaviour:
   Symptoms: 65
   MedicineIcon: {fileID: 21300000, guid: 48cd251b53c7c87448317d93e9db9738, type: 3}
   Description: 
+  MoodResponses:
+  - "\uBC29\uAE08\uAE4C\uC9C0 \uCF54\uB07C\uB9AC \uCF54\uB97C 10\uBC14\uD034 \uB3CC\uC558\uB354\uB2C8
+    \uC870\uAE08 \uC878\uB9B0 \uAE30\uBD84\uC774\uC57C! "
