@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Alone_in_Winter
   m_EditorClassIdentifier: 
   DiseaseName: Alone_in_Winter
-  Symptoms: 8
+  Symptoms: 136
   Description: 
-  Icon: {fileID: 0}

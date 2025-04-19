@@ -27,6 +27,18 @@ public class DialogueManager : MonoBehaviour
     public int MaxRepeatBeforePenalty = 2; // 반복 허용 횟수
     public string DialogueFileName = "dialogue_kr"; // 대사 JSON 파일 이름
 
+    [Header("NPC 이미지 루트")]
+    public Transform npcUIRoot;
+
+    // 그래픽 리소스를 사용하지 않는 증상 정의
+    private readonly HashSet<Symptom> nonVisualSymptoms = new()
+    {
+    Symptom.Prickly,
+    Symptom.Tickling,
+    Symptom.Sneezing,
+    Symptom.Dizzy
+    };
+
     void Start()
     {
         LoadDialogueData(); // 대사 데이터 불러오기
@@ -34,8 +46,11 @@ public class DialogueManager : MonoBehaviour
         LoadPatienceReactions(); // 인내심 반응 불러오기
         LoadSymptomTags(); // 증상 태그 로딩
 
+
         NpcManager.AssignUniqueDiseases(); // NPC에게 랜덤 질병 배정
-        NpcManager.SelectRandomNPC(); // 랜덤한 NPC 선택
+        Debug.Log("[🧪 npcUIRoot 확인] " + (npcUIRoot == null ? "NULL" : npcUIRoot.name));
+        NpcManager.SelectRandomNPC(npcUIRoot); // 랜덤한 NPC 선택
+
         currentNPC = NpcManager.GetSelectedNPC(); // 선택된 NPC 저장
 
         UIManager.Instance.SetPortrait(currentNPC.Portrait); // NPC 이미지 표시
@@ -168,7 +183,7 @@ public class DialogueManager : MonoBehaviour
         });
     }
 
-    void GenerateSymptomQuizChoices() // 증상 퀴즈 선택지 3개(정답 1개 + 오답 2개)를 생성하여 UI에 출력
+    void GenerateSymptomQuizChoices()
     {
         string id = currentLine.Id;
 
@@ -180,12 +195,18 @@ public class DialogueManager : MonoBehaviour
         }
 
         var all = currentNPC.Disease.Symptoms;
-        var realSymptoms = SymptomSystem.SymptomFlag.Extract(all);
+        var realSymptoms = SymptomSystem.SymptomFlag.Extract(all)
+            .Where(s => nonVisualSymptoms.Contains(s)) 
+            .ToList();
+
         List<(string, bool)> choices = new();
 
         if (all == Symptom.None || realSymptoms.Count == 0)
         {
-            var fakePool = Enum.GetValues(typeof(Symptom)).Cast<Symptom>().Where(s => s != Symptom.None).ToList();
+            var fakePool = Enum.GetValues(typeof(Symptom)).Cast<Symptom>()
+                .Where(s => s != Symptom.None && nonVisualSymptoms.Contains(s))
+                .ToList();
+
             while (choices.Count < 3)
             {
                 string candidate = fakePool[UnityEngine.Random.Range(0, fakePool.Count)].ToString();
@@ -197,7 +218,8 @@ public class DialogueManager : MonoBehaviour
         {
             Symptom trueSymptom = realSymptoms[UnityEngine.Random.Range(0, realSymptoms.Count)];
             var fakePool = Enum.GetValues(typeof(Symptom)).Cast<Symptom>()
-                .Where(s => s != Symptom.None && !SymptomSystem.SymptomFlag.Has(all, s)).ToList();
+                .Where(s => s != Symptom.None && nonVisualSymptoms.Contains(s) && !SymptomSystem.SymptomFlag.Has(all, s))
+                .ToList();
 
             List<string> fakeSymptoms = new();
             while (fakeSymptoms.Count < 2)
@@ -208,18 +230,18 @@ public class DialogueManager : MonoBehaviour
             }
 
             choices = new List<(string, bool)>
-            {
-                (trueSymptom.ToString(), true),
-                (fakeSymptoms[0], false),
-                (fakeSymptoms[1], false)
-            };
+        {
+            (trueSymptom.ToString(), true),
+            (fakeSymptoms[0], false),
+            (fakeSymptoms[1], false)
+        };
         }
 
         choices = choices.OrderBy(x => UnityEngine.Random.value).ToList();
         symptomChoicesCacheMap[id] = choices;
 
         foreach (var (text, isTrue) in choices)
-            CreateChoiceButton(text, isTrue, true); // 카운트 포함
+            CreateChoiceButton(text, isTrue, true);
     }
 
     void TrackQuestion(string id) // 질문을 몇 번 했는지 기록 (질문 카운터 증가)

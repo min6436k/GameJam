@@ -55,6 +55,7 @@ namespace SymptomSystem
         }
 
 
+
         public static List<Symptom> ExtractVisual(Symptom data)
         {
             List<Symptom> all = Extract(data);

@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Dizzy_Elephant_Nose
   m_EditorClassIdentifier: 
   DiseaseName: Dizzy_Elephant_Nose
-  Symptoms: 1
+  Symptoms: 65
   Description: 
-  Icon: {fileID: 0}

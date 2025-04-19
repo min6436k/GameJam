@@ -3,12 +3,14 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; } // 싱글톤 인스턴스
 
     [Header("Dialogue UI")]
+    public GameObject DialogueUI;
     public TMP_Text SpeakerText; // 화자 이름 텍스트
     public TMP_Text DialogueText; // 대사 내용 텍스트
     public Transform ChoiceContainer; // 선택지 버튼을 담을 부모 오브젝트
@@ -22,6 +24,13 @@ public class UIManager : MonoBehaviour
 
     public Image PortraitImage; // NPC 초상화 이미지
 
+    [Header("PuzlleButton UI")]
+    public string PuzzleSceneName;
+    public GameObject puzzleButton; // 퍼즐씬으로 가는 버튼
+    public float delay = 2.5f;
+
+    public GameObject PrescriptionUI;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -30,6 +39,11 @@ public class UIManager : MonoBehaviour
             return;
         }
         Instance = this;
+    }
+
+    private void Start()
+    {
+        Hidebutton();
     }
 
     public void SetSpeaker(string speaker)
@@ -127,5 +141,34 @@ public class UIManager : MonoBehaviour
         // NPC 초상화 이미지 적용 및 표시
         PortraitImage.sprite = sprite;
         PortraitImage.enabled = sprite != null;
+    }
+
+    private void Hidebutton()
+    {
+        if (puzzleButton != null)
+            puzzleButton.SetActive(false);
+
+        Invoke(nameof(ShowButton), delay);
+    }
+
+    private void ShowButton()
+    {
+        if (puzzleButton != null)
+            puzzleButton.SetActive(true); 
+    }
+
+    public void OnClickMakeMedicine()
+    {     
+
+        if (DialogueUI != null) DialogueUI.SetActive(false);
+        if (PrescriptionUI != null) PrescriptionUI.SetActive(false);
+
+        SceneManager.LoadScene(PuzzleSceneName);
+    }
+
+    public void LoadPuzzleScene()
+    {
+        Debug.Log("퍼즐 씬으로 이동합니다!");
+        SceneManager.LoadScene(PuzzleSceneName);
     }
 }
