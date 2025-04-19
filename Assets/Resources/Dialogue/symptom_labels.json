@@ -1,8 +1,8 @@
 {
     "Labels": [
-      { "Key": "Dizzy", "Value": "빙글빙글" },
-      { "Key": "Prickly", "Value": "따끔따끔" },
-      { "Key": "Tickling", "Value": "간질간질" },
-      { "Key": "Sneezing", "Value": "재채기 와르르" }
+      { "Key": "Dizzy", "Value": "빙글빙글 어지럽니?" },
+      { "Key": "Prickly", "Value": "목이 따끔따끔 해?" },
+      { "Key": "Tickling", "Value": "간질간질 거려?" },
+      { "Key": "Sneezing", "Value": "재채기 나와?" }
     ]
   }

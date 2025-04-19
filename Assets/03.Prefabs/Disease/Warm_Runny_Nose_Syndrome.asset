@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DiseaseName: Warm_Runny_Nose_Syndrome
   Symptoms: 48
+  MedicineIcon: {fileID: 21300000, guid: 9b3724063aea52942b15220ce46bbcf8, type: 3}
   Description: 

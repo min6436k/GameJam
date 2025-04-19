@@ -26,13 +26,13 @@
     {
       "Id": "right_answer",
       "Speaker": "환자",
-      "Text": "맞아요! 그 증상이 있어요.",
+      "Text": "맞아!",
       "Next": "intro"
     },
     {
       "Id": "wrong_answer",
       "Speaker": "환자",
-      "Text": "그런 증상은 없어요.",
+      "Text": "그렇진 않은거 같은데",
       "Next": "intro"
     }
   ]

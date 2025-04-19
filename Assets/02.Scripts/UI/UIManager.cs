@@ -31,6 +31,8 @@ public class UIManager : MonoBehaviour
 
     public GameObject PrescriptionUI;
 
+    public Image MedicineImageUI; // 인스펙터에서 약 아이콘을 표시할 UI Image
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -170,5 +172,11 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("퍼즐 씬으로 이동합니다!");
         SceneManager.LoadScene(PuzzleSceneName);
+    }
+
+    public void ShowMedicineIcon(Sprite icon)
+    {
+        MedicineImageUI.sprite = icon;
+        MedicineImageUI.enabled = icon != null;
     }
 }

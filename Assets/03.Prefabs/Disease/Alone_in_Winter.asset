@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DiseaseName: Alone_in_Winter
   Symptoms: 136
+  MedicineIcon: {fileID: 21300000, guid: 4c1ab55fa7e1ed54398228772dd686a0, type: 3}
   Description: 
